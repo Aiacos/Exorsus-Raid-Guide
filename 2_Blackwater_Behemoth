@@ -1,9 +1,9 @@
-{T}Summary for Tanks
-Perform a tank switch roughly every 15 seconds to reset the boss's Feeding Frenzy Icon Feeding Frenzy buff.
-Make sure to always be in melee range of the boss, as it is stationary and could otherwise hit other players.{/T}
+{T}|cFF00FF00Summary for Tanks|r
+- Perform a tank switch roughly every 15 seconds to reset the boss's {spell:71013}|cFFA335EEFeeding Frenzy|r buff.
+- Make sure to always be in melee range of the boss, as it is stationary and could otherwise hit other players.{/T}
 
-{H}Summary for Healers and DPS
-Avoid being in open water if affected by Bioluminescence Icon Bioluminescence.
-Kill the Shimmerskin Pufferfish, one at a time, 45 seconds apart, to create a Bioluminescent Cloud Icon Bioluminescent Cloud and then run through it to pick up the Bioluminescence Icon Bioluminescence debuff that allows you to be healed.
-During transition phases, get to the new fighting area without touching any Darkwater Jellyfish on the way. Use the Slipstream Icon Slipstream to increase your swim speed.
-Always be more than 5 yards away from other raid members (except during transition phases) to avoid taking damage from Bioelectric Feelers Icon Bioelectric Feelers.{/H}
+{H}|cFF00FF00Summary for Healers and DPS|r
+- Avoid being in open water if affected by {spell:292133}|cFFA335EEBioluminescence|r.
+- Kill the Shimmerskin Pufferfish, one at a time, 45 seconds apart, to create a {spell:292205}|cFFA335EEBioluminescent Cloud|r and then run through it to pick up the {spell:292133}|cFFA335EEBioluminescence|r debuff that allows you to be healed.
+- During transition phases, get to the new fighting area without touching any Darkwater Jellyfish on the way. Use the {spell:301180}|cFFA335EESlipstream|r to increase your swim speed.
+- Always be more than 5 yards away from other raid members (except during transition phases) to avoid taking damage from {spell:292247}|cFFA335EEBioelectric Feelers|r.{/H}
