@@ -14,3 +14,13 @@
 - Unpin players of your group pinned by {spell:295601}|cFF72D5FFFrostshock Bolts|r.
 - Avoid the projectiles from {spell:295138}|cFF72D5FFOverwhelming Barrage|r if you can.
 - Speak with your healers before reseting your {spell:294726}|cFF72D5FFChimeric Marks|r debuff (walking in a void zone from the other area is the simplest way).{/H}
+
+{D}|cFF00FF00Summary for Healers and DPS|r
+- Always stay on the side of the room assigned to your {spell:294726}|cFF72D5FFChimeric Marks|r debuff: Frost area if you have {spell:294711}|cFF72D5FFFrost Mark|r or Poison area if you have {spell:294715}|cFF72D5FFToxic Brand|r (beware of {spell:295791}|cFF72D5FFInversion|r changing the void zones in Heroic and Mythic difficulties).
+- Make sure the knockback from {spell:295332}|cFF72D5FFCrushing Reverberation|r does not send you in a void zone. Help the tank soak the initial damage if they ask.
+- Do not walk in void zones or come in contact with a player who has the other {spell:294726}|cFF72D5FFChimeric Marks|r debuff.
+- Drop your void zones (from {spell:295346}|cFF72D5FFOverflow|r) at the back of your area. In Mythic difficulty (and possibly Heroic as well), ask for people to help you soak the damage from the explosion.
+- Ignore {spell:295601}|cFF72D5FFFrostshock Bolts|r and let it pin you in LFR and Normal difficulties. In Heroic and Mythic difficulties, move towards the other group so that one of their player can intercept the bolt.
+- Unpin players of your group pinned by {spell:295601}|cFF72D5FFFrostshock Bolts|r.
+- Avoid the projectiles from {spell:295138}|cFF72D5FFOverwhelming Barrage|r if you can.
+- Speak with your healers before reseting your {spell:294726}|cFF72D5FFChimeric Marks|r debuff (walking in a void zone from the other area is the simplest way).{/D}
