@@ -1,24 +1,21 @@
 {T}|cFF00FF00Summary for Tanks|r
 - During Phase One, perform a tank switch after each {spell:296566}|cFF72D5FFTide Fist|r cast. Make sure not to walk into the waters surrounding the boss.
 - During Phase Two, move to the Eye of the Storm and pick up the Stormwraith and Stormling adds, and tank them within the Eye of the Storm.{/T}
-
 {H}|cFF00FF00Summary for Healers and DPS|r
-During Phase One
-- Constantly be on the look-out for {spell:296421}|cFFA335EEArcanado|r tornadoes and avoid getting hit by them.
+|cff808080During Phase One|r
+- Constantly be on the look-out for {spell:296421}|cFF72D5FFArcanado|r tornadoes and avoid getting hit by them.
 - Stay away from the water at the center of the fighting area as well as at the back of it.
-- Move away from other players when affected by {spell:102455}|cFFA335EEArcane Bomb|r, going to a safe, remote location to drop the void zone when healers dispel you.
-During Phase Two
-- Make your way to the Eye of the Storm as quickly as possible, ideally through gaps in the {spell:296462}|cFFA335EESquall Trap|r lines (if a gap does not exist, detonate a single Squall Trap to make room).
-- Interrupt the Stormwraith's {spell:119358}|cFFA335EEFocus Power|r cast, and then DPS it and the Stormling adds down while remaining within the Eye of the Storm.
-- Beware of the frequent knockbacks that the Stormwraith will cast through {spell:296701}|cFFA335EEGale Buffet|r.{/H}
-
-
+- Move away from other players when affected by {spell:102455}|cFF72D5FFArcane Bomb|r, going to a safe, remote location to drop the void zone when healers dispel you.
+|cff808080During Phase Two|r
+- Make your way to the Eye of the Storm as quickly as possible, ideally through gaps in the {spell:296462}|cFF72D5FFSquall Trap|r lines (if a gap does not exist, detonate a single Squall Trap to make room).
+- Interrupt the Stormwraith's {spell:119358}|cFF72D5FFFocus Power|r cast, and then DPS it and the Stormling adds down while remaining within the Eye of the Storm.
+- Beware of the frequent knockbacks that the Stormwraith will cast through {spell:296701}|cFF72D5FFGale Buffet|r.{/H}
 {D}|cFF00FF00Summary for Healers and DPS|r
-During Phase One
-- Constantly be on the look-out for {spell:296421}|cFFA335EEArcanado|r tornadoes and avoid getting hit by them.
+|cff808080During Phase One|r
+- Constantly be on the look-out for {spell:296421}|cFF72D5FFArcanado|r tornadoes and avoid getting hit by them.
 - Stay away from the water at the center of the fighting area as well as at the back of it.
-- Move away from other players when affected by {spell:102455}|cFFA335EEArcane Bomb|r, going to a safe, remote location to drop the void zone when healers dispel you.
-During Phase Two
-- Make your way to the Eye of the Storm as quickly as possible, ideally through gaps in the {spell:296462}|cFFA335EESquall Trap|r lines (if a gap does not exist, detonate a single Squall Trap to make room).
-- Interrupt the Stormwraith's {spell:119358}|cFFA335EEFocus Power|r cast, and then DPS it and the Stormling adds down while remaining within the Eye of the Storm.
-- Beware of the frequent knockbacks that the Stormwraith will cast through {spell:296701}|cFFA335EEGale Buffet|r.{/D}
+- Move away from other players when affected by {spell:102455}|cFF72D5FFArcane Bomb|r, going to a safe, remote location to drop the void zone when healers dispel you.
+|cff808080During Phase Two|r
+- Make your way to the Eye of the Storm as quickly as possible, ideally through gaps in the {spell:296462}|cFF72D5FFSquall Trap|r lines (if a gap does not exist, detonate a single Squall Trap to make room).
+- Interrupt the Stormwraith's {spell:119358}|cFF72D5FFFocus Power|r cast, and then DPS it and the Stormling adds down while remaining within the Eye of the Storm.
+- Beware of the frequent knockbacks that the Stormwraith will cast through {spell:296701}|cFF72D5FFGale Buffet|r.{/D}
