@@ -74,13 +74,13 @@ class Converter(object):
         textList.append(self.wrapTextWith(bossName, self.redColor) + '\n')
 
         # content
-        tankText = '{T}' + self.wrapTextWith(tankSectionTag.string, self.greenColor) + self.contentPrepare(tankContentList) + '{/T}'
+        tankText = '{T}' + self.wrapTextWith(tankSectionTag.string, self.greenColor) + '\n' + self.contentPrepare(tankContentList) + '{/T}'
         textList.append(tankText)
 
-        healerText = '{H}' + self.wrapTextWith(healerSectionTag.string, self.greenColor) + self.contentPrepare(healerContentList) + '{/H}'
+        healerText = '{H}' + self.wrapTextWith(healerSectionTag.string, self.greenColor) + '\n' + self.contentPrepare(healerContentList) + '{/H}'
         textList.append(healerText)
 
-        dpsText = '{D}' + self.wrapTextWith(dpsSectionTag.string, self.greenColor) + self.contentPrepare(dpsContentList) + '{/D}'
+        dpsText = '{D}' + self.wrapTextWith(dpsSectionTag.string, self.greenColor) + '\n' + self.contentPrepare(dpsContentList) + '{/D}'
         textList.append(dpsText)
 
         return ''.join(textList)
