@@ -12,16 +12,15 @@ class Converter(object):
         self.spellColor = '|cFF72D5FFxxxxxx|r'
         self.epicColor = '|cFFA335EExxxxxx|r'
 
-
         r = requests.get(url)
         soup = bs(r.content, 'html.parser')
-        # print(soup.find_all('h3', string='2.8. Summary for Tanks'))
+
         tankSectionTag = soup.find_all('h3', string=re.compile('Summary for Tanks'))[0]
         healerSectionTag = soup.find_all('h3', string=re.compile('Summary for Healers and DPS'))[0]
         dpsSectionTag = soup.find_all('h3', string=re.compile('Summary for Healers and DPS'))[0]
 
         # ToDo: nomeBoss
-        bossName = 'Blackwater Behemoth'
+        bossName = 'Queen Azshara'
 
         print self.finalize(bossName, tankSectionTag, healerSectionTag, dpsSectionTag)
 
@@ -57,11 +56,11 @@ class Converter(object):
                 for linkTag in linkTagList:
                     href = linkTag['href']
                     spellName = linkTag.string
-                    text = text.replace(spellName, self.wrapSpell(self.extractIconID(href)) + self.wrapTextWith(spellName, self.spellColor)).rstrip('\n')
+                    text = text.replace(spellName, self.wrapSpell(self.extractIconID(href)) + self.wrapTextWith(spellName, self.spellColor), 1).rstrip('\n')
 
                 contentTextList.append('- ' + text)
 
-        contentText = ''.join(contentTextList)
+        contentText = '\n'.join(contentTextList)
         return  contentText.rstrip()
 
     def finalize(self, bossName, tankSectionTag, healerSectionTag, dpsSectionTag):
@@ -88,7 +87,7 @@ class Converter(object):
 
 
 if __name__ == '__main__':
-    url = 'https://www.icy-veins.com/wow/orgozoa-strategy-guide-in-the-eternal-palace-raid'
+    url = 'https://www.icy-veins.com/wow/queen-azshara-strategy-guide-in-the-eternal-palace-raid'
     Converter(url)
 
 
