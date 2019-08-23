@@ -23,7 +23,7 @@ class Converter(object):
         # ToDo: nomeBoss
         bossName = 'Queen Azshara'
 
-        print(self.finalize(bossName, tankSectionTag, healerSectionTag, dpsSectionTag))
+        self.text = self.finalize(bossName, tankSectionTag, healerSectionTag, dpsSectionTag)
 
     def extractIconID(self, link):
         id = link.split('/')[-1].split('-')[0]
@@ -109,8 +109,12 @@ class Converter(object):
 
         return ''.join(textList)
 
+    def get_text(self):
+        return self.text
+
 
 if __name__ == '__main__':
     url = 'https://www.icy-veins.com/wow/queen-azshara-strategy-guide-in-the-eternal-palace-raid'
     url2 = 'https://www.icy-veins.com/wow/orgozoa-strategy-guide-in-the-eternal-palace-raid'
-    Converter(url)
+    c = Converter(url)
+    print c.get_text()
