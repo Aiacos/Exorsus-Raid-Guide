@@ -1,11 +1,12 @@
-#!usr/bin/env python3
+#!usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import sys
 import time
 from PySide2.QtWidgets import QApplication, QMessageBox, QMainWindow, QWidget, QGridLayout, QDialog
-from PySide2.QtWidgets import QLineEdit, QPushButton, QFileDialog, QProgressBar, QVBoxLayout
+from PySide2.QtWidgets import QLineEdit, QPushButton, QFileDialog, QProgressBar, QVBoxLayout, QLabel
 from PySide2.QtCore import Slot, QThread, Signal
+from main import Converter
 
 
 class RaidGuideGui(QMainWindow):
@@ -37,7 +38,8 @@ class RaidGuideGui(QMainWindow):
         self.url_line_edit.textChanged[str].connect(
             lambda: self.run_btn.setEnabled(self.url_line_edit.text() != ""))
 
-        # line edit form for url
+        # line edit form for save file in specific folder
+        #TODO deve essere completato
         self.outfile_line_edit = QLineEdit(self)
         self.outfile_line_edit.setGeometry(15, 130, 497, 20)
         self.outfile_line_edit.setPlaceholderText(
@@ -63,7 +65,10 @@ class RaidGuideGui(QMainWindow):
         self.show()
 
     def start_conversion(self):
-        ProgressBar(self)
+        url = self.url_line_edit.text()
+        pb = ProgressBar(self)
+        pb.process_link(url)
+
 
 
 class ProgressBar(QDialog):
@@ -80,16 +85,31 @@ class ProgressBar(QDialog):
         self.setMinimumSize(self.WIDTH, self.HEIGHT)
         layout = QVBoxLayout(self)
 
+        # Create a label for work in progress
+        self.work_in_progress = QLabel(self)
+        self.work_in_progress.setText("Please be patient...")
+        layout.addWidget(self.work_in_progress)
+
         # Create a progress bar the main layout
         self.progress_bar = QProgressBar(self)
         self.progress_bar.setRange(0, 1)
         layout.addWidget(self.progress_bar)
 
+        # init task
         self.myLongTask = TaskThread()
         self.myLongTask.taskFinished.connect(self.onFinished)
 
+        # open dialog
         self.show()
-        # self.onStart()
+
+    def process_link(self, url):
+        """
+        Start the conversion process from the html page, run the process in a separate thread.
+        :param url: [str] the address of the page to be analyzed is required
+        """
+
+        self.myLongTask.setUrl(url)
+        self.onStart()
 
     def onStart(self):
         self.progress_bar.setRange(0, 0)
@@ -101,12 +121,18 @@ class ProgressBar(QDialog):
         time.sleep(0.5)
         self.close()
 
-
 class TaskThread(QThread):
     taskFinished = Signal()
+    url = None
+    def __init__(self):
+        super(TaskThread, self).__init__()
+        pass
+
+    def setUrl(self, url):
+        self.url = url
 
     def run(self):
-        time.sleep(10)
+        Converter(self.url)
         self.taskFinished.emit()
 
 
