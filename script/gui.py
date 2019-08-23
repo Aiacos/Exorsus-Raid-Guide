@@ -53,9 +53,15 @@ class RaidGuideGui(QMainWindow):
         self.run_btn.setText("Run")
         self.run_btn.clicked.connect(self.start_conversion)
 
+        # button save
+        self.save_btn = QPushButton(self, enabled=False)
+        self.save_btn.setGeometry(512, 266, 113, 32)
+        self.save_btn.setText("Save")
+        self.save_btn.clicked.connect(self.start_conversion)
+
         # button exit
         self.exit_btn = QPushButton(self)
-        self.exit_btn.setGeometry(512, 266, 113, 32)
+        self.exit_btn.setGeometry(512, 306, 113, 32)
         self.exit_btn.setText("Exit")
         self.exit_btn.clicked.connect(app.exit)
 
