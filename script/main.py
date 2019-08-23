@@ -13,7 +13,8 @@ class Converter(object):
         self.epicColor = '|cFFA335EExxxxxx|r'
 
         r = requests.get(url)
-        soup = bs(r.content, 'html.parser')
+        print r.content.rstrip('\n')
+        soup = bs(r.content.rstrip('\n'), 'html.parser')
 
         tankSectionTag = soup.find_all('h3', string=re.compile('Summary for Tanks'))[0]
         healerSectionTag = soup.find_all('h3', string=re.compile('Summary for Healers and DPS'))[0]
@@ -74,7 +75,7 @@ class Converter(object):
             contentTextList.append(self.wrapTextWith(contentList.text, self.grayColor))
             contentList = contentList.next_element.next_element.next_element
 
-        print(contentList.prettify())
+        # print(contentList.prettify())
         lineList = contentList.get_text()  # .find_all(text=True)
         lineList = str(lineList).splitlines()
         for line in lineList:
