@@ -39,7 +39,7 @@ class RaidGuideGui(QMainWindow):
             lambda: self.run_btn.setEnabled(self.url_line_edit.text() != ""))
 
         # line edit form for save file in specific folder
-        #TODO deve essere completato
+        # TODO deve essere completato
         self.outfile_line_edit = QLineEdit(self)
         self.outfile_line_edit.setGeometry(15, 130, 497, 20)
         self.outfile_line_edit.setPlaceholderText(
@@ -70,9 +70,7 @@ class RaidGuideGui(QMainWindow):
         pb.process_link(url)
 
 
-
 class ProgressBar(QDialog):
-
     WIDTH = 640  # define width of windows
     HEIGHT = 150  # define height of windows
 
@@ -121,9 +119,11 @@ class ProgressBar(QDialog):
         time.sleep(0.5)
         self.close()
 
+
 class TaskThread(QThread):
     taskFinished = Signal()
     url = None
+
     def __init__(self):
         super(TaskThread, self).__init__()
         pass
