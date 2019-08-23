@@ -22,7 +22,7 @@ class Converter(object):
         # ToDo: nomeBoss
         bossName = 'Queen Azshara'
 
-        print self.finalize(bossName, tankSectionTag, healerSectionTag, dpsSectionTag)
+        print(self.finalize(bossName, tankSectionTag, healerSectionTag, dpsSectionTag))
 
     def extractIconID(self, link):
         id = link.split('/')[-1].split('-')[0]
@@ -56,12 +56,33 @@ class Converter(object):
                 for linkTag in linkTagList:
                     href = linkTag['href']
                     spellName = linkTag.string
-                    text = text.replace(spellName, self.wrapSpell(self.extractIconID(href)) + self.wrapTextWith(spellName, self.spellColor), 1).rstrip('\n')
+                    text = text.replace(spellName,
+                                        self.wrapSpell(self.extractIconID(href)) + self.wrapTextWith(spellName,
+                                                                                                     self.spellColor),
+                                        1).rstrip('\n')
 
                 contentTextList.append('- ' + text)
 
         contentText = '\n'.join(contentTextList)
-        return  contentText.rstrip()
+        return contentText.rstrip()
+
+    def contentPrepare3(self, contentList):
+        contentTextList = []
+
+        # check phase1
+        if (contentList.name == 'h4'):
+            contentTextList.append(self.wrapTextWith(contentList.text, self.grayColor))
+            contentList = contentList.next_element.next_element.next_element
+
+        print(contentList.prettify())
+        lineList = contentList.get_text()  # .find_all(text=True)
+        lineList = str(lineList).splitlines()
+        for line in lineList:
+            # print(line)
+            contentTextList.append(line)
+
+        contentText = '\n'.join(contentTextList)
+        return contentText.rstrip()
 
     def finalize(self, bossName, tankSectionTag, healerSectionTag, dpsSectionTag):
         tankContentList = tankSectionTag.next_element.next_element.next_element
@@ -73,23 +94,22 @@ class Converter(object):
         textList.append(self.wrapTextWith(bossName, self.redColor) + '\n')
 
         # content
-        tankText = '{T}' + self.wrapTextWith(tankSectionTag.string, self.greenColor) + '\n' + self.contentPrepare(tankContentList) + '{/T}'
+        tankText = '{T}' + self.wrapTextWith(tankSectionTag.string, self.greenColor) + '\n' + self.contentPrepare3(
+            tankContentList) + '{/T}'
         textList.append(tankText)
 
-        healerText = '{H}' + self.wrapTextWith(healerSectionTag.string, self.greenColor) + '\n' + self.contentPrepare(healerContentList) + '{/H}'
+        healerText = '{H}' + self.wrapTextWith(healerSectionTag.string, self.greenColor) + '\n' + self.contentPrepare3(
+            healerContentList) + '{/H}'
         textList.append(healerText)
 
-        dpsText = '{D}' + self.wrapTextWith(dpsSectionTag.string, self.greenColor) + '\n' + self.contentPrepare(dpsContentList) + '{/D}'
+        dpsText = '{D}' + self.wrapTextWith(dpsSectionTag.string, self.greenColor) + '\n' + self.contentPrepare3(
+            dpsContentList) + '{/D}'
         textList.append(dpsText)
 
         return ''.join(textList)
 
 
-
 if __name__ == '__main__':
     url = 'https://www.icy-veins.com/wow/queen-azshara-strategy-guide-in-the-eternal-palace-raid'
+    url2 = 'https://www.icy-veins.com/wow/orgozoa-strategy-guide-in-the-eternal-palace-raid'
     Converter(url)
-
-
-
-
