@@ -3,9 +3,11 @@
 
 import sys
 import time
-from PySide2.QtWidgets import QApplication, QMessageBox, QMainWindow, QWidget, QGridLayout, QDialog
-from PySide2.QtWidgets import QLineEdit, QPushButton, QFileDialog, QProgressBar, QVBoxLayout, QLabel
-from PySide2.QtCore import Slot, QThread, Signal
+
+from PySide2.QtCore import QThread, Signal
+from PySide2.QtWidgets import QApplication, QMainWindow, QDialog
+from PySide2.QtWidgets import QLineEdit, QPushButton, QProgressBar, QVBoxLayout, QLabel
+
 from main import Converter
 
 
@@ -39,7 +41,7 @@ class RaidGuideGui(QMainWindow):
             lambda: self.run_btn.setEnabled(self.url_line_edit.text() != ""))
 
         # line edit form for save file in specific folder
-        #TODO deve essere completato
+        # TODO deve essere completato
         self.outfile_line_edit = QLineEdit(self)
         self.outfile_line_edit.setGeometry(15, 130, 497, 20)
         self.outfile_line_edit.setPlaceholderText(
@@ -62,6 +64,7 @@ class RaidGuideGui(QMainWindow):
         self.file_dialog.setGeometry(512, 126, 113, 32)
         self.file_dialog.setText("browse")
 
+        # launch gui
         self.show()
 
     def start_conversion(self):
@@ -70,9 +73,7 @@ class RaidGuideGui(QMainWindow):
         pb.process_link(url)
 
 
-
 class ProgressBar(QDialog):
-
     WIDTH = 640  # define width of windows
     HEIGHT = 150  # define height of windows
 
@@ -121,9 +122,11 @@ class ProgressBar(QDialog):
         time.sleep(0.5)
         self.close()
 
+
 class TaskThread(QThread):
     taskFinished = Signal()
     url = None
+
     def __init__(self):
         super(TaskThread, self).__init__()
         pass
