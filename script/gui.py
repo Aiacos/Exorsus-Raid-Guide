@@ -5,7 +5,7 @@ import sys
 import time
 
 from PySide2.QtCore import QThread, Signal
-from PySide2.QtWidgets import QApplication, QMainWindow, QDialog
+from PySide2.QtWidgets import QApplication, QMainWindow, QDialog, QTextEdit
 from PySide2.QtWidgets import QLineEdit, QPushButton, QProgressBar, QVBoxLayout, QLabel
 
 from main import Converter
@@ -69,6 +69,9 @@ class RaidGuideGui(QMainWindow):
         self.file_dialog = QPushButton(self)
         self.file_dialog.setGeometry(512, 126, 113, 32)
         self.file_dialog.setText("browse")
+
+        # create text area
+        self.text_area = QTextEdit(self)
 
         # launch gui
         self.show()
