@@ -13,8 +13,7 @@ class Converter(object):
         self.epicColor = '|cFFA335EExxxxxx|r'
 
         r = requests.get(url)
-        print r.content.rstrip('\n')
-        soup = bs(r.content.rstrip('\n'), 'html.parser')
+        soup = bs(r.content, 'html.parser')
 
         tankSectionTag = soup.find_all('h3', string=re.compile('Summary for Tanks'))[0]
         healerSectionTag = soup.find_all('h3', string=re.compile('Summary for Healers and DPS'))[0]
@@ -69,6 +68,8 @@ class Converter(object):
 
     def contentPrepare3(self, contentList):
         contentTextList = []
+
+        print contentList
 
         # check phase1
         if (contentList.name == 'h4'):
