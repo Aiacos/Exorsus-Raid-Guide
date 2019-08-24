@@ -13,8 +13,10 @@ class Converter(object):
         self.epicColor = '|cFFA335EExxxxxx|r'
 
         r = requests.get(url)
-        print r.content.rstrip('\n')
-        soup = bs(r.content.rstrip('\n'), 'html.parser')
+        soup = bs(r.content, 'html.parser')
+
+        self.removeInline(soup)
+        #print soup.prettify()
 
         tankSectionTag = soup.find_all('h3', string=re.compile('Summary for Tanks'))[0]
         healerSectionTag = soup.find_all('h3', string=re.compile('Summary for Healers and DPS'))[0]
@@ -24,6 +26,28 @@ class Converter(object):
         bossName = 'Queen Azshara'
 
         self.text = self.finalize(bossName, tankSectionTag, healerSectionTag, dpsSectionTag)
+
+    def removeInline(self, html):
+        liList = html.find_all('li', recursive=True)
+        for li in liList:
+            newLine = None
+            oldLine = li.string
+            if oldLine:
+                newLine = oldLine.strip()
+                li.string = newLine
+            #li.replace_with(newLine)
+
+            newLine = str(li).replace('\n', ' ')
+            #print bs(newLine).html.body.contents[0]
+            li.replace_with(bs(newLine).html.body.contents[0])
+
+        liList = html.find_all('li', recursive=True)
+        for li in liList:
+            li.append('\n')
+
+        ulList = html.find_all('ul', recursive=True)
+        for ul in ulList:
+            ul.append('\n')
 
     def extractIconID(self, link):
         id = link.split('/')[-1].split('-')[0]
@@ -70,6 +94,8 @@ class Converter(object):
     def contentPrepare3(self, contentList):
         contentTextList = []
 
+        #print contentList.prettify()
+
         # check phase1
         if (contentList.name == 'h4'):
             contentTextList.append(self.wrapTextWith(contentList.text, self.grayColor))
@@ -78,12 +104,12 @@ class Converter(object):
         # print(contentList.prettify())
         lineList = contentList.get_text()  # .find_all(text=True)
         lineList = str(lineList).splitlines()
+        print lineList
         for line in lineList:
-            # print(line)
-            contentTextList.append(line)
+            contentTextList.append(line.strip())
 
         contentText = '\n'.join(contentTextList)
-        return contentText.rstrip()
+        return contentText.rstrip().replace('\n\n', '\n')
 
     def finalize(self, bossName, tankSectionTag, healerSectionTag, dpsSectionTag):
         tankContentList = tankSectionTag.next_element.next_element.next_element
@@ -116,5 +142,16 @@ class Converter(object):
 if __name__ == '__main__':
     url = 'https://www.icy-veins.com/wow/queen-azshara-strategy-guide-in-the-eternal-palace-raid'
     url2 = 'https://www.icy-veins.com/wow/orgozoa-strategy-guide-in-the-eternal-palace-raid'
+    url3 = 'https://www.icy-veins.com/wow/za-qul-harbinger-of-ny-alotha-strategy-guide-in-the-eternal-palace-raid'
+
     c = Converter(url)
     print c.get_text()
+
+    #lookhaead = re.compile('<li>')
+
+    #testString = '<li> AAAAAAAAAA \n bbbb <b>\n</b> bbbbbbb</li><b>\n</b><li> AAAAA <b>\n</b> AAAAA \n bbbbbbbbbbb</li>'
+    #m = re.sub('\n(?=.*</li>)', ' ', testString)
+    #m2 = re.sub('(?<=<li>)*.\n(?=.*</li>)', ' ', testString)
+    #print m2
+
+

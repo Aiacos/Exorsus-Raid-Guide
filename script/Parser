@@ -1,0 +1,20 @@
+from bs4 import BeautifulSoup as bs
+import requests
+import re
+
+class Converter(object):
+
+    def __init__(self, url):
+
+        r = requests.get(url)
+        soup = bs(r.content, 'html.parser')
+
+        # sezioni
+        tankSectionTag = soup.find_all('h3', string=re.compile('Summary for Tanks'))[0]
+        healerSectionTag = soup.find_all('h3', string=re.compile('Summary for Healers and DPS'))[0]
+        dpsSectionTag = soup.find_all('h3', string=re.compile('Summary for Healers and DPS'))[0]
+
+        # contentuto delle sezioni
+        tankContentList = tankSectionTag.next_element.next_element.next_element
+        healerContentList = healerSectionTag.next_element.next_element.next_element
+        dpsContentList = dpsSectionTag.next_element.next_element.next_element
