@@ -4,8 +4,8 @@
 import sys
 import time
 
-from PySide2.QtCore import QThread, Signal
-from PySide2.QtWidgets import QApplication, QMainWindow, QDialog
+from PySide2.QtCore import QObject, QThread, Signal
+from PySide2.QtWidgets import QApplication, QMainWindow, QDialog, QTextEdit, QMessageBox
 from PySide2.QtWidgets import QLineEdit, QPushButton, QProgressBar, QVBoxLayout, QLabel
 
 from main import Converter
@@ -17,7 +17,7 @@ class RaidGuideGui(QMainWindow):
     There are two input fields for the url list and for deciding the destination folder.
     """
     WIDTH = 640  # define width of windows
-    HEIGHT = 325  # define height of windows
+    HEIGHT = 480  # define height of windows
 
     def __init__(self):
         """
@@ -48,14 +48,22 @@ class RaidGuideGui(QMainWindow):
             "https://www.icy-veins.com/wow/queen-azshara-strategy-guide-in-the-eternal-palace-raid")
 
         # button execute
-        self.run_btn = QPushButton(self, enabled=False)
+        self.run_btn = QPushButton(self)
         self.run_btn.setGeometry(512, 226, 113, 32)
         self.run_btn.setText("Run")
+        self.run_btn.setDisabled(True)
         self.run_btn.clicked.connect(self.start_conversion)
+
+        # button save
+        self.save_btn = QPushButton(self)
+        self.save_btn.setGeometry(512, 266, 113, 32)
+        self.save_btn.setText("Save")
+        self.save_btn.setDisabled(True)
+        self.save_btn.clicked.connect(self.export_on_file)
 
         # button exit
         self.exit_btn = QPushButton(self)
-        self.exit_btn.setGeometry(512, 266, 113, 32)
+        self.exit_btn.setGeometry(512, 306, 113, 32)
         self.exit_btn.setText("Exit")
         self.exit_btn.clicked.connect(app.exit)
 
@@ -64,6 +72,11 @@ class RaidGuideGui(QMainWindow):
         self.file_dialog.setGeometry(512, 126, 113, 32)
         self.file_dialog.setText("browse")
 
+        # create text area
+        self.text_area = QTextEdit(self)
+        self.text_area.setGeometry(15, 160, 497, 305)
+        self.text_area.setReadOnly(True)
+
         # launch gui
         self.show()
 
@@ -71,6 +84,23 @@ class RaidGuideGui(QMainWindow):
         url = self.url_line_edit.text()
         pb = ProgressBar(self)
         pb.process_link(url)
+
+    def export_on_file(self):
+        ret = QMessageBox.warning(self, self.tr("My Application"),
+                                  self.tr("The document has been modified.\n" +
+                                          "Do you want to save your changes?"),
+                                  QMessageBox.Save | QMessageBox.Discard
+                                  | QMessageBox.Cancel,
+                                  QMessageBox.Save)
+        if ret == QMessageBox.Save:
+            print("click saved")
+            # Save was clicked
+        elif ret == QMessageBox.Discard:
+            # Don't save was clicked
+            print("click don't saved")
+        elif ret == QMessageBox.Cancel:
+            print("click Cancel")
+        # cancel was clicked
 
 
 class ProgressBar(QDialog):
@@ -137,6 +167,12 @@ class TaskThread(QThread):
     def run(self):
         Converter(self.url)
         self.taskFinished.emit()
+
+class StreamText(QObject):
+        newText = Signal(str)
+
+        def write(self, text):
+            self.newText.emit(str(text))
 
 
 if __name__ == "__main__":
