@@ -7,6 +7,7 @@ import time
 from PySide2.QtCore import QObject, QThread, Signal
 from PySide2.QtWidgets import QApplication, QMainWindow, QDialog, QTextEdit, QMessageBox
 from PySide2.QtWidgets import QLineEdit, QPushButton, QProgressBar, QVBoxLayout, QLabel
+from PySide2 import QtCore, QtWidgets, QtGui
 
 from main import Converter
 
@@ -24,6 +25,11 @@ class RaidGuideGui(QMainWindow):
         GUI constructor, the structure that will appear on the screen is specified.
         """
         super(RaidGuideGui, self).__init__()
+
+        # initialize Layout
+        self.layout = QtWidgets.QHBoxLayout()
+        self.setLayout(self.layout)
+
         # initialize the main windows set constant dimension and title
         self.resize(self.WIDTH, self.HEIGHT)
         # TODO dare un titolo alla finestra
@@ -40,12 +46,19 @@ class RaidGuideGui(QMainWindow):
         self.url_line_edit.textChanged[str].connect(
             lambda: self.run_btn.setEnabled(self.url_line_edit.text() != ""))
 
+        self.layout.addWidget(self.url_line_edit)
+
         # line edit form for save file in specific folder
         # TODO deve essere completato
         self.outfile_line_edit = QLineEdit(self)
         self.outfile_line_edit.setGeometry(15, 130, 497, 20)
         self.outfile_line_edit.setPlaceholderText(
             "https://www.icy-veins.com/wow/queen-azshara-strategy-guide-in-the-eternal-palace-raid")
+
+        self.layout.addWidget(self.outfile_line_edit)
+
+        # vertical Layout
+        self.vButtonLayout = QtWidgets.QVBoxLayout()
 
         # button execute
         self.run_btn = QPushButton(self)
@@ -72,10 +85,17 @@ class RaidGuideGui(QMainWindow):
         self.file_dialog.setGeometry(512, 126, 113, 32)
         self.file_dialog.setText("browse")
 
-        # create text area
-        self.text_area = QTextEdit(self)
-        self.text_area.setGeometry(15, 160, 497, 305)
-        self.text_area.setReadOnly(True)
+        self.vButtonLayout.addWidget(self.run_btn)
+        self.vButtonLayout.addWidget(self.exit_btn)
+        self.vButtonLayout.addWidget(self.file_dialog)
+
+        # text area Layout
+        self.textLayout = QtWidgets.QHBoxLayout()
+
+        #self.textLayout.addWidget(self.textArea)
+        self.textLayout.addWidget(self.vButtonLayout)
+
+        self.layout.addWidget(self.textLayout)
 
         # launch gui
         self.show()
