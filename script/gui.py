@@ -4,7 +4,7 @@
 import sys
 import time
 
-from PySide2.QtCore import QThread, Signal
+from PySide2.QtCore import QObject, QThread, Signal
 from PySide2.QtWidgets import QApplication, QMainWindow, QDialog, QTextEdit, QMessageBox
 from PySide2.QtWidgets import QLineEdit, QPushButton, QProgressBar, QVBoxLayout, QLabel
 
@@ -58,6 +58,7 @@ class RaidGuideGui(QMainWindow):
         self.save_btn = QPushButton(self)
         self.save_btn.setGeometry(512, 266, 113, 32)
         self.save_btn.setText("Save")
+        self.save_btn.setDisabled(True)
         self.save_btn.clicked.connect(self.export_on_file)
 
         # button exit
@@ -86,7 +87,7 @@ class RaidGuideGui(QMainWindow):
 
     def export_on_file(self):
         ret = QMessageBox.warning(self, self.tr("My Application"),
-                                  self.tr("The document has been modified.\n" + \
+                                  self.tr("The document has been modified.\n" +
                                           "Do you want to save your changes?"),
                                   QMessageBox.Save | QMessageBox.Discard
                                   | QMessageBox.Cancel,
@@ -100,6 +101,7 @@ class RaidGuideGui(QMainWindow):
         elif ret == QMessageBox.Cancel:
             print("click Cancel")
         # cancel was clicked
+
 
 class ProgressBar(QDialog):
     WIDTH = 640  # define width of windows
@@ -165,6 +167,12 @@ class TaskThread(QThread):
     def run(self):
         Converter(self.url)
         self.taskFinished.emit()
+
+class StreamText(QObject):
+        newText = Signal(str)
+
+        def write(self, text):
+            self.newText.emit(str(text))
 
 
 if __name__ == "__main__":
