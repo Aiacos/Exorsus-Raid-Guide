@@ -16,6 +16,7 @@ class Converter(object):
         soup = bs(r.content, 'html.parser')
 
         self.removeInline(soup)
+        #print soup.prettify()
 
         tankSectionTag = soup.find_all('h3', string=re.compile('Summary for Tanks'))[0]
         healerSectionTag = soup.find_all('h3', string=re.compile('Summary for Healers and DPS'))[0]
@@ -93,7 +94,7 @@ class Converter(object):
     def contentPrepare3(self, contentList):
         contentTextList = []
 
-        print contentList.prettify()
+        #print contentList.prettify()
 
         # check phase1
         if (contentList.name == 'h4'):
@@ -103,6 +104,7 @@ class Converter(object):
         # print(contentList.prettify())
         lineList = contentList.get_text()  # .find_all(text=True)
         lineList = str(lineList).splitlines()
+        print lineList
         for line in lineList:
             contentTextList.append(line.strip())
 
@@ -142,7 +144,7 @@ if __name__ == '__main__':
     url2 = 'https://www.icy-veins.com/wow/orgozoa-strategy-guide-in-the-eternal-palace-raid'
     url3 = 'https://www.icy-veins.com/wow/za-qul-harbinger-of-ny-alotha-strategy-guide-in-the-eternal-palace-raid'
 
-    c = Converter(url3)
+    c = Converter(url)
     print c.get_text()
 
     #lookhaead = re.compile('<li>')
