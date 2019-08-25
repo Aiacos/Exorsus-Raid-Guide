@@ -21,7 +21,7 @@ class Converter(object):
 
         #print dpsContentList :: <h4 id="sec-2-8-1">2.8.1. Phase One</h4>
 
-        #self.checkSection2(tankSectionTag)
+        self.checkSection2(tankSectionTag)
         self.checkSection2(dpsSectionTag)
 
 
@@ -66,9 +66,19 @@ class Converter(object):
         for i in section.find_next_sibling('ul'):
             if i.string != '\n':
                 print 'TAG: ', i.name
-                print 'CONENUTO: ', i.contents
+                print 'CONENUTO: ', i.contents # [phase, inner li]
+
+                # Phase
+                if i.contents[0].name == 'b' and i.contents[1].name == 'ul':
+                    print 'no Phase'
+
+                # no Phase
+                else:
+                    pass
+
                 print 'TIPO: ', type(i)
                 print '-------------'
+
 
         return contentTextList#.rstrip().replace('\n\n', '\n')
 
@@ -97,5 +107,5 @@ if __name__ == '__main__':
     url2 = 'https://www.icy-veins.com/wow/orgozoa-strategy-guide-in-the-eternal-palace-raid'
     url3 = 'https://www.icy-veins.com/wow/za-qul-harbinger-of-ny-alotha-strategy-guide-in-the-eternal-palace-raid'
 
-    c = Converter(url)
+    c = Converter(url3)
     #print c.get_text()
