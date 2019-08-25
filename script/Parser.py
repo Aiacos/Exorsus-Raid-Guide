@@ -34,6 +34,11 @@ class Converter(object):
             print '-------------'
             titlePhaseList.append(p)
 
+        if len(titlePhaseList) > 0:
+            for t in titlePhaseList:
+                print 'TITLE: ', t.text
+                print 'TITLE CONTENT: ', t.find_next_sibling('ul')
+
         # list Phase: During Phase One
         for i in section.find_next_sibling('ul'):
             if i.string != '\n':
