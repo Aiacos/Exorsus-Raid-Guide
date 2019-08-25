@@ -15,40 +15,12 @@ class Converter(object):
         dpsSectionTag = soup.find_all('h3', string=re.compile('Summary for Healers and DPS'))[0]
 
         # contentuto delle sezioni
-        tankContentList = tankSectionTag.next_element.next_element.next_element
-        healerContentList = healerSectionTag.next_element.next_element.next_element
-        dpsContentList = dpsSectionTag.next_element.next_element.next_element
-
-        #print dpsContentList :: <h4 id="sec-2-8-1">2.8.1. Phase One</h4>
-
-        self.checkSection2(tankSectionTag)
-        self.checkSection2(dpsSectionTag)
+        self.checkSection(tankSectionTag)
+        self.checkSection(healerSectionTag)
+        self.checkSection(dpsSectionTag)
 
 
     def checkSection(self, section):
-        sectionContentList = section.next_element.next_element.next_element
-        if sectionContentList.name == 'ul':
-            # only one list
-            for li in sectionContentList.findChildren():
-                print li
-                print type(li)
-                print '-------------'
-                for ul in li:
-                    # print ul
-                    # print type(ul)
-                    # print '-------------'
-                    pass
-
-
-        if sectionContentList.name == 'h4':
-            print section
-            phaseList = section.find_all('h4')
-            print phaseList
-            #print phaseList.contents
-            #for p in phaseList:
-                #print p
-
-    def checkSection2(self, section):
         contentTextList = []
 
         print section
