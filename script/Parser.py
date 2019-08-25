@@ -29,9 +29,9 @@ class Converter(object):
         titlePhaseList = []
         sectionID = section['id'] + '-\d'
         for p in section.find_next_siblings('h4', id=re.compile(sectionID)):
-            #print p
-            #print type(p)
-            #print '-------------'
+            print p
+            print type(p)
+            print '-------------'
             titlePhaseList.append(p)
 
         # list Phase: During Phase One
@@ -42,11 +42,12 @@ class Converter(object):
 
                 # Phase
                 if i.contents[0].name == 'b' and i.contents[1].name == 'ul':
-                    print 'no Phase'
+                    print 'SECTION: no Phase'
 
                 # no Phase
                 else:
-                    pass
+                    print 'SECTION: Phase'
+
 
                 print 'TIPO: ', type(i)
                 print '-------------'

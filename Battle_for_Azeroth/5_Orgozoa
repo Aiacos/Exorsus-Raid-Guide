@@ -2,8 +2,7 @@
 {T}|cFF00FF00Summary for Tanks|r
 |cff808080In Phase One and Two|r, tank swap before the current tank's {spell:298156}|cFF72D5FFDesensitizing Sting|r stacks reach 10.
 The off-tank must pick up the Zoatroid adds during Phase One (and during Phase Two, on Heroic mode), and tank them more than 15 yards away from the boss. After they are dead, this tank must soak the resulting void zones.
-|cff808080During Phase Two|r, all adds must be picked up and tanked more than 15 yards away from the boss.{/T}
-{H}|cFF00FF00Summary for Healers and DPS|r
+|cff808080During Phase Two|r, all adds must be picked up and tanked more than 15 yards away from the boss.{/T}{H}|cFF00FF00Summary for Healers and DPS|r
 |cff808080Phase One|r
 - DPS players must focus on killing the Zoatroid adds when they spawn.
 - Avoid being hit by {spell:298103}|cFF72D5FFDribbling Ichor|r.
@@ -16,8 +15,7 @@ The off-tank must pick up the Zoatroid adds during Phase One (and during Phase T
 - DPS any new adds that spawn during this phase.
 - Interrupt the Witches' {spell:295822}|cFF72D5FFConductive Pulse|r.
 - If targeted by {spell:295779}|cFF72D5FFAqua Lance|r, move away from the raid, to the side of the room, to drop the resulting void zone.
-- Move away from the Hulks when they are casting {spell:296698}|cFF72D5FFReverberating Tremor|r.{/H}
-{D}|cFF00FF00Summary for Healers and DPS|r
+- Move away from the Hulks when they are casting {spell:296698}|cFF72D5FFReverberating Tremor|r.{/H}{D}|cFF00FF00Summary for Healers and DPS|r
 |cff808080Phase One|r
 - DPS players must focus on killing the Zoatroid adds when they spawn.
 - Avoid being hit by {spell:298103}|cFF72D5FFDribbling Ichor|r.

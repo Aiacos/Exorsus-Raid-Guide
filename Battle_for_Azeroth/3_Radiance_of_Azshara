@@ -1,8 +1,7 @@
 |cFFFF0000Radiance of Azshara|r
 {T}|cFF00FF00Summary for Tanks|r
 - During Phase One, perform a tank switch after each {spell:296566}|cFF72D5FFTide Fist|r cast. Make sure not to walk into the waters surrounding the boss.
-- During Phase Two, move to the Eye of the Storm and pick up the Stormwraith and Stormling adds, and tank them within the Eye of the Storm.{/T}
-{H}|cFF00FF00Summary for Healers and DPS|r
+- During Phase Two, move to the Eye of the Storm and pick up the Stormwraith and Stormling adds, and tank them within the Eye of the Storm.{/T}{H}|cFF00FF00Summary for Healers and DPS|r
 |cff808080During Phase One|r
 - Constantly be on the look-out for {spell:296421}|cFF72D5FFArcanado|r tornadoes and avoid getting hit by them.
 - Stay away from the water at the center of the fighting area as well as at the back of it.
@@ -10,8 +9,7 @@
 |cff808080During Phase Two|r
 - Make your way to the Eye of the Storm as quickly as possible, ideally through gaps in the {spell:296462}|cFF72D5FFSquall Trap|r lines (if a gap does not exist, detonate a single Squall Trap to make room).
 - Interrupt the Stormwraith's {spell:119358}|cFF72D5FFFocus Power|r cast, and then DPS it and the Stormling adds down while remaining within the Eye of the Storm.
-- Beware of the frequent knockbacks that the Stormwraith will cast through {spell:296701}|cFF72D5FFGale Buffet|r.{/H}
-{D}|cFF00FF00Summary for Healers and DPS|r
+- Beware of the frequent knockbacks that the Stormwraith will cast through {spell:296701}|cFF72D5FFGale Buffet|r.{/H}{D}|cFF00FF00Summary for Healers and DPS|r
 |cff808080During Phase One|r
 - Constantly be on the look-out for {spell:296421}|cFF72D5FFArcanado|r tornadoes and avoid getting hit by them.
 - Stay away from the water at the center of the fighting area as well as at the back of it.

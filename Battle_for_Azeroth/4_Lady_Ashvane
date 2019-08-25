@@ -1,8 +1,7 @@
 |cFFFF0000Lady Ashvane|r
 {T}|cFF00FF00Summary for Tanks|r
 - Throughout both phases, tanks must perform a swap to deal with the {spell:296725}|cFF72D5FFBarnacle Bash|r ability.
-- Positioning is important, making sure that the tanks leave the void zones created by {spell:296725}|cFF72D5FFBarnacle Bash|r close together, and also making sure that the boss is never tanked too close to any {spell:296555}|cFF72D5FFCoral Growths|r.{/T}
-{H}|cFF00FF00Summary for Healers and DPS|r
+- Positioning is important, making sure that the tanks leave the void zones created by {spell:296725}|cFF72D5FFBarnacle Bash|r close together, and also making sure that the boss is never tanked too close to any {spell:296555}|cFF72D5FFCoral Growths|r.{/T}{H}|cFF00FF00Summary for Healers and DPS|r
 |cff808080Phase One|r
 - Intercept the {spell:296688}|cFF72D5FFRippling Wave|r bubbles; this leaves behind a debuff on the intercepting player, and players should aim not to have more than 2-3 stacks of this debuff.
 - Move out of {spell:298054}|cFF72D5FFUpsurge|r areas to avoid being damaged and knocked up.
@@ -11,8 +10,7 @@
 - Deal as much damage as possible to the boss.
 - Continue to handle {spell:296725}|cFF72D5FFBarnacle Bash|r, {spell:297333}|cFF72D5FFBriny Bubble|r, and {spell:298054}|cFF72D5FFUpsurge|r in the same way as during Phase One.
 - When {spell:296944}|cFF72D5FFArcing Azerite|r is cast, each pair of marked players must position themselves in such a way as to place one or more {spell:296555}|cFF72D5FFCoral Growths|r between themselves.
-- Healers must heal the raid damage from {spell:297206}|cFF72D5FFExposed Azerite|r.{/H}
-{D}|cFF00FF00Summary for Healers and DPS|r
+- Healers must heal the raid damage from {spell:297206}|cFF72D5FFExposed Azerite|r.{/H}{D}|cFF00FF00Summary for Healers and DPS|r
 |cff808080Phase One|r
 - Intercept the {spell:296688}|cFF72D5FFRippling Wave|r bubbles; this leaves behind a debuff on the intercepting player, and players should aim not to have more than 2-3 stacks of this debuff.
 - Move out of {spell:298054}|cFF72D5FFUpsurge|r areas to avoid being damaged and knocked up.
