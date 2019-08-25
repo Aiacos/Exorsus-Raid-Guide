@@ -15,9 +15,9 @@ class Converter(object):
         dpsSectionTag = soup.find_all('h3', string=re.compile('Summary for Healers and DPS'))[0]
 
         # contentuto delle sezioni
-        self.checkSection(tankSectionTag)
-        self.checkSection(healerSectionTag)
-        self.checkSection(dpsSectionTag)
+        self.tankDict = self.checkSection(tankSectionTag)
+        self.healerDict = self.checkSection(healerSectionTag)
+        self.dpsDict = self.checkSection(dpsSectionTag)
 
 
     def checkSection(self, section):
@@ -44,11 +44,11 @@ class Converter(object):
                 print 'TITLE CONTENT: ', t.find_next_sibling('ul')
                 phaseList.append(self.parseList(t))
 
-            contentTextDict['PhaseList'] = phaseList
+            contentTextDict['h4PhaseList'] = phaseList
             contentTextDict['ContentList'] = []
         else:
             contentList = self.parseList(section)
-            contentTextDict['PhaseList'] = []
+            contentTextDict['h4PhaseList'] = []
             contentTextDict['ContentList'] = contentList
 
         return contentTextDict #contentTextList    #.rstrip().replace('\n\n', '\n')
@@ -74,6 +74,7 @@ class Converter(object):
                 else:
                     print 'SECTION: Phase'
                     print 'FIX LIST:', bs(str(i), 'html.parser')
+                    liList.append(bs(str(i), 'html.parser'))
 
 
                 print 'TIPO: ', type(i)
@@ -106,4 +107,7 @@ if __name__ == '__main__':
     url3 = 'https://www.icy-veins.com/wow/za-qul-harbinger-of-ny-alotha-strategy-guide-in-the-eternal-palace-raid'
 
     c = Converter(url)
+    print c.tankDict['section']
+    print c.tankDict['h4PhaseList']
+    print c.tankDict['ContentList']
     #print c.get_text()
