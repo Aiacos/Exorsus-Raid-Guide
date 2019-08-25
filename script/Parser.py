@@ -22,8 +22,11 @@ class Converter(object):
 
     def checkSection(self, section):
         contentTextList = []
+        contentTextDict = {}
 
         print section
+        contentTextDict['section'] = section
+
 
         # title Phase: 2.8.1. Phase One
         titlePhaseList = []
@@ -35,9 +38,24 @@ class Converter(object):
             titlePhaseList.append(p)
 
         if len(titlePhaseList) > 0:
+            phaseList = []
             for t in titlePhaseList:
                 print 'TITLE: ', t.text
                 print 'TITLE CONTENT: ', t.find_next_sibling('ul')
+                phaseList.append(self.parseList(t))
+
+            contentTextDict['PhaseList'] = phaseList
+            contentTextDict['ContentList'] = []
+        else:
+            contentList = self.parseList(section)
+            contentTextDict['PhaseList'] = []
+            contentTextDict['ContentList'] = contentList
+
+        return contentTextDict #contentTextList    #.rstrip().replace('\n\n', '\n')
+
+
+    def parseList(self, section):
+        liList = []
 
         # list Phase: During Phase One
         for i in section.find_next_sibling('ul'):
@@ -49,17 +67,19 @@ class Converter(object):
                 if i.contents[0].name == 'b' and i.contents[1].name == 'ul':
                     print 'SECTION: no Phase'
 
+                    liList.append(i.contents[0])
+                    liList.append(i.contents[1])
+
                 # no Phase
                 else:
                     print 'SECTION: Phase'
+                    print 'FIX LIST:', bs(str(i), 'html.parser')
 
 
                 print 'TIPO: ', type(i)
                 print '-------------'
 
-
-        return contentTextList#.rstrip().replace('\n\n', '\n')
-
+        return liList
 
 
     def _testNextElement(self, sectionTag):
@@ -85,5 +105,5 @@ if __name__ == '__main__':
     url2 = 'https://www.icy-veins.com/wow/orgozoa-strategy-guide-in-the-eternal-palace-raid'
     url3 = 'https://www.icy-veins.com/wow/za-qul-harbinger-of-ny-alotha-strategy-guide-in-the-eternal-palace-raid'
 
-    c = Converter(url3)
+    c = Converter(url)
     #print c.get_text()
