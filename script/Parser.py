@@ -2,7 +2,56 @@ from bs4 import BeautifulSoup as bs
 import requests
 import re
 
-class Converter(object):
+
+class ExpansionParser():
+    pass
+
+class RaidParser():
+    pass
+
+class BossParser():
+
+    def __init__(self, url):
+
+        r = requests.get(url)
+        soup = bs(r.content, 'html.parser')
+
+        self.raidDict = self.parseBossList(soup)
+        for keys, values in self.raidDict.items():
+            print(keys)
+            if keys == 'mainPage':
+                print values[0], values[1]
+            else:
+                for i in values:
+                    print i[0], i[1]
+
+    def parseBossList(self, soup):
+        raidDict = {}
+        raidBossList = soup.find_all('div', class_='toc_page_list_items')[0]
+        raidPage = raidBossList.find_all('span')[0]
+        bossTagList = raidBossList.contents[3:-2:2]
+
+        bossList = []
+        for boss in bossTagList:
+            bossList.append([boss.a.find_all('span')[1].get_text(), boss.a['href'].replace('//', '')])
+
+        # dict structure mainPage <- [Name, url]
+        # dict structure bossList <- [, [Name, url]]
+        raidDict['mainPage'] = [raidPage.a.find_all('span')[1].get_text(), raidPage.a['href'].replace('//', '')]
+        raidDict['bossList'] = bossList
+
+        return raidDict
+
+    def getRaidBossDict(self):
+        return self.raidDict
+
+    def getBossList(self):
+        return self.raidDict['bossList']
+
+    def getMainPage(self):
+        return self.raidDict['mainPage']
+
+class TactParser(object):
 
     def __init__(self, url):
 
@@ -106,8 +155,8 @@ if __name__ == '__main__':
     url2 = 'https://www.icy-veins.com/wow/orgozoa-strategy-guide-in-the-eternal-palace-raid'
     url3 = 'https://www.icy-veins.com/wow/za-qul-harbinger-of-ny-alotha-strategy-guide-in-the-eternal-palace-raid'
 
-    c = Converter(url)
-    print c.tankDict['section']
-    print c.tankDict['h4PhaseList']
-    print c.tankDict['ContentList']
+    c = TactParser(url)
+    #print c.tankDict['section']
+    #print c.tankDict['h4PhaseList']
+    #print c.tankDict['ContentList']
     #print c.get_text()
