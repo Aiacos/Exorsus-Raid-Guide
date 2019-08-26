@@ -1,3 +1,3 @@
-import Parser
-import Converter
+import parser
+import converter
 import gui
