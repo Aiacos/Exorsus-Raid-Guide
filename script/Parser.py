@@ -92,8 +92,9 @@ class TactParser(object):
         if len(titlePhaseList) > 0:
             phaseList = []
             for t in titlePhaseList:
-                # print 'TITLE: ', t.text
+                # print 'TITLE: ', t
                 # print 'TITLE CONTENT: ', t.find_next_sibling('ul')
+                phaseList.append(t)
                 phaseList.append(self.parseList(t))
 
             contentTextDict['h4PhaseList'] = phaseList

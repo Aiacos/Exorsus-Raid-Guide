@@ -10,14 +10,30 @@ class Converter(object):
         self.spellColor = '|cFF72D5FFxxxxxx|r'
         self.epicColor = '|cFFA335EExxxxxx|r'
 
-        self.text = self.finalize(bossDict['boss'], bossDict['tank'], bossDict['healer'], bossDict['dps'])
+        self.text = self.convert(bossDict['boss'], bossDict['tank'], bossDict['healer'], bossDict['dps'])
 
     def extractIconID(self, link):
         id = link.split('/')[-1].split('-')[0]
         return str(id)
 
-    def findTextIcon(self, tag):
-        pass
+    def replaceSpells(self, text, spellDict):
+        for name, id in spellDict.items():
+            spell = self.wrapSpell(id) + self.wrapTextWith(name, self.spellColor)
+            text = text.replace(name, spell)
+
+        return text
+
+    def findSpells(self, tag):
+        spellDict = {}
+
+        spellList = tag.find_all('a')
+        if spellList:
+            for spell in spellList:
+                id = self.extractIconID(spell['href'])
+                spellName = spell.text
+                spellDict[spellName] = id
+
+        return spellDict
 
     def wrapTextWith(self, text, wrap):
         s = wrap.replace('xxxxxx', text)
@@ -31,32 +47,50 @@ class Converter(object):
         newList = [l[0], l[1:]]
         return newList
 
-    def contentPrepareFromBS(self, contentList):
-        for p in contentList:
-            if type(p) is list:
-                print p
-        return ''
+    def contentPrepareFromBS(self, contentTextDict):
+        # section
+        section = contentTextDict['section'].get_text()
 
-    def finalize(self, bossName, tankContentList, healerContentList, dpsContentList):
-        tankContentList = self.prepareSummaryTitle(tankContentList)
-        healerContentList = self.prepareSummaryTitle(healerContentList)
-        dpsContentList = self.prepareSummaryTitle(dpsContentList)
+        # content
+        content = []
+        if contentTextDict['h4PhaseList']:
+            for line, counter in zip(contentTextDict['h4PhaseList'], range(len(contentTextDict['h4PhaseList']))):
+                if counter % 2:
+                    for i in line:
+                        for li in i:
+                            spellDict = self.findSpells(li)
+                            text = str(li.text).replace('\n', ' ').replace('  ', ' ').strip()
+                            text = self.replaceSpells(text, spellDict)
+                            content.append(text)
+                else:
+                    content.append(self.wrapTextWith(str(line.text), self.grayColor))
+        elif contentTextDict['ContentList']:
+            print ' NORMAL '
+        else:
+            content = ''
+        #print contentTextDict['section']
+        #contentTextDict['h4PhaseList']
+        #contentTextDict['ContentList']
+
+        return section, '\n'.join(content)
+
+    def convert(self, bossName, tankContentList, healerContentList, dpsContentList):
+        tankContentList = self.contentPrepareFromBS(tankContentList)
+        healerContentList = self.contentPrepareFromBS(healerContentList)
+        dpsContentList = self.contentPrepareFromBS(dpsContentList)
 
         # title
         textList = []
         textList.append(self.wrapTextWith(bossName, self.redColor) + '\n')
 
         # content
-        tankText = '{T}' + self.wrapTextWith(tankContentList[0], self.greenColor) + '\n' + self.contentPrepare(
-            tankContentList[1]) + '{/T}'
+        tankText = '{T}' + self.wrapTextWith(tankContentList[0], self.greenColor) + '\n' + tankContentList[1] + '{/T}'
         textList.append(tankText)
 
-        healerText = '{H}' + self.wrapTextWith(healerContentList[0], self.greenColor) + '\n' + self.contentPrepare(
-            healerContentList[1]) + '{/H}'
+        healerText = '{H}' + self.wrapTextWith(healerContentList[0], self.greenColor) + '\n' + healerContentList[1] + '{/H}'
         textList.append(healerText)
 
-        dpsText = '{D}' + self.wrapTextWith(dpsContentList[0], self.greenColor) + '\n' + self.contentPrepare(
-            dpsContentList[1]) + '{/D}'
+        dpsText = '{D}' + self.wrapTextWith(dpsContentList[0], self.greenColor) + '\n' + dpsContentList[1] + '{/D}'
         textList.append(dpsText)
 
         return ''.join(textList)
@@ -103,14 +137,9 @@ if __name__ == '__main__':
 
     dpsString = healerString
 
-    testDict = {
-        "boss": "Queen Azshara",
-        "tank": tankString.splitlines(),
-        "healer": healerString.splitlines(),
-        "dps": dpsString.splitlines()
-    }
+    #testDict = {"boss": "Queen Azshara", "tank": tankString.splitlines(), "healer": healerString.splitlines(), "dps": dpsString.splitlines()}
 
     ########################################
 
-    c = Converter(testDict)
-    print c.get_text()
+    #c = Converter(testDict)
+    #print c.get_text()
