@@ -58,6 +58,9 @@ class TactParser(object):
         r = requests.get(url)
         soup = bs(r.content, 'html.parser')
 
+        # boss Name
+        self.bossName = soup.find('span', class_='toc_page_list_item selected').get_text().replace('\n', ' ').strip()
+
         # sezioni
         tankSectionTag = soup.find_all('h3', string=re.compile('Summary for Tanks'))[0]
         healerSectionTag = soup.find_all('h3', string=re.compile('Summary for Healers and DPS'))[0]
@@ -73,7 +76,7 @@ class TactParser(object):
         contentTextList = []
         contentTextDict = {}
 
-        print section
+        # print section
         contentTextDict['section'] = section
 
 
@@ -81,16 +84,16 @@ class TactParser(object):
         titlePhaseList = []
         sectionID = section['id'] + '-\d'
         for p in section.find_next_siblings('h4', id=re.compile(sectionID)):
-            print p
-            print type(p)
-            print '-------------'
+            # print p
+            # print type(p)
+            # print '-------------'
             titlePhaseList.append(p)
 
         if len(titlePhaseList) > 0:
             phaseList = []
             for t in titlePhaseList:
-                print 'TITLE: ', t.text
-                print 'TITLE CONTENT: ', t.find_next_sibling('ul')
+                # print 'TITLE: ', t.text
+                # print 'TITLE CONTENT: ', t.find_next_sibling('ul')
                 phaseList.append(self.parseList(t))
 
             contentTextDict['h4PhaseList'] = phaseList
@@ -102,6 +105,16 @@ class TactParser(object):
 
         return contentTextDict #contentTextList    #.rstrip().replace('\n\n', '\n')
 
+    def getBossTactTagDict(self):
+        bossDict = {}
+
+        bossDict['boss'] = self.bossName
+        bossDict['tank'] = self.tankDict
+        bossDict['healer'] = self.healerDict
+        bossDict['dps'] = self.dpsDict
+
+        return bossDict
+
 
     def parseList(self, section):
         liList = []
@@ -109,25 +122,25 @@ class TactParser(object):
         # list Phase: During Phase One
         for i in section.find_next_sibling('ul'):
             if i.string != '\n':
-                print 'TAG: ', i.name
-                print 'CONENUTO: ', i.contents # [phase, inner li]
+                # print 'TAG: ', i.name
+                # print 'CONENUTO: ', i.contents # [phase, inner li]
 
                 # Phase
                 if i.contents[0].name == 'b' and i.contents[1].name == 'ul':
-                    print 'SECTION: no Phase'
+                    # print 'SECTION: no Phase'
 
                     liList.append(i.contents[0])
                     liList.append(i.contents[1])
 
                 # no Phase
                 else:
-                    print 'SECTION: Phase'
-                    print 'FIX LIST:', bs(str(i), 'html.parser')
+                    # print 'SECTION: Phase'
+                    # print 'FIX LIST:', bs(str(i), 'html.parser')
                     liList.append(bs(str(i), 'html.parser'))
 
 
-                print 'TIPO: ', type(i)
-                print '-------------'
+                # print 'TIPO: ', type(i)
+                # print '-------------'
 
         return liList
 

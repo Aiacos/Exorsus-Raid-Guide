@@ -1,3 +1,4 @@
+from bs4 import BeautifulSoup as bs
 
 
 class Converter(object):
@@ -30,10 +31,10 @@ class Converter(object):
         newList = [l[0], l[1:]]
         return newList
 
-    def contentPrepare(self, contentList):
+    def contentPrepareFromBS(self, contentList):
         for p in contentList:
             if type(p) is list:
-                print i
+                print p
         return ''
 
     def finalize(self, bossName, tankContentList, healerContentList, dpsContentList):
