@@ -56,16 +56,21 @@ class Converter(object):
         if contentTextDict['h4PhaseList']:
             for line, counter in zip(contentTextDict['h4PhaseList'], range(len(contentTextDict['h4PhaseList']))):
                 if counter % 2:
-                    for i in line:
-                        for li in i:
-                            spellDict = self.findSpells(li)
-                            text = str(li.text).replace('\n', ' ').replace('  ', ' ').strip()
-                            text = self.replaceSpells(text, spellDict)
-                            content.append(text)
+                    for li in line:
+                        #for li in i:
+                        spellDict = self.findSpells(li)
+                        text = str(li.text).replace('\n', ' ').replace('  ', ' ').strip()
+                        text = self.replaceSpells(text, spellDict)
+                        content.append('- ' + text)
                 else:
                     content.append(self.wrapTextWith(str(line.text), self.grayColor))
         elif contentTextDict['ContentList']:
-            print ' NORMAL '
+            for li in contentTextDict['ContentList']:
+                spellDict = self.findSpells(li)
+                text = str(li.text).replace('\n', ' ').replace('  ', ' ').strip()
+                text = self.replaceSpells(text, spellDict)
+                content.append('- ' + text)
+
         else:
             content = ''
         #print contentTextDict['section']
