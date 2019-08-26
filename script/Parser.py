@@ -17,13 +17,13 @@ class BossParser():
         soup = bs(r.content, 'html.parser')
 
         self.raidDict = self.parseBossList(soup)
-        for keys, values in self.raidDict.items():
-            print(keys)
-            if keys == 'mainPage':
-                print values[0], values[1]
-            else:
-                for i in values:
-                    print i[0], i[1]
+        # for keys, values in self.raidDict.items():
+        #     print(keys)
+        #     if keys == 'mainPage':
+        #         print values[0], values[1]
+        #     else:
+        #         for i in values:
+        #             print i[0], i[1]
 
     def parseBossList(self, soup):
         raidDict = {}
