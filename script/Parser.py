@@ -33,7 +33,8 @@ class BossParser():
 
         bossList = []
         for boss in bossTagList:
-            bossList.append([boss.a.find_all('span')[1].get_text(), boss.a['href'].replace('//', '')])
+            link = 'https://' + str(boss.a['href'].replace('//', ''))
+            bossList.append([boss.a.find_all('span')[1].get_text(), link])
 
         # dict structure mainPage <- [Name, url]
         # dict structure bossList <- [, [Name, url]]
@@ -62,9 +63,9 @@ class TactParser(object):
         self.bossName = soup.find('span', class_='toc_page_list_item selected').get_text().replace('\n', ' ').strip()
 
         # sezioni
-        tankSectionTag = soup.find_all('h3', string=re.compile('Summary for Tanks'))[0]
-        healerSectionTag = soup.find_all('h3', string=re.compile('Summary for Healers and DPS'))[0]
-        dpsSectionTag = soup.find_all('h3', string=re.compile('Summary for Healers and DPS'))[0]
+        tankSectionTag = soup.find_all(['h2', 'h3'], string=re.compile('Summary for Tanks'))[0]
+        healerSectionTag = soup.find_all(['h2', 'h3'], string=re.compile('Summary for Healers and DPS'))[0]
+        dpsSectionTag = soup.find_all(['h2', 'h3'], string=re.compile('Summary for Healers and DPS'))[0]
 
         # contentuto delle sezioni
         self.tankDict = self.checkSection(tankSectionTag)
