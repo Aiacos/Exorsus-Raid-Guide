@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup as bs
 import requests
 import re
+from collections import OrderedDict
 
 
 class ExpansionParser():
@@ -27,19 +28,24 @@ class BossParser():
 
     def parseBossList(self, soup):
         raidDict = {}
+        bossDict = OrderedDict()
         raidBossList = soup.find_all('div', class_='toc_page_list_items')[0]
         raidPage = raidBossList.find_all('span')[0]
         bossTagList = raidBossList.contents[3:-2:2]
 
         bossList = []
+        counter = 0
         for boss in bossTagList:
             link = 'https://' + str(boss.a['href'].replace('//', ''))
             bossList.append([boss.a.find_all('span')[1].get_text(), link])
+            bossDict[boss.a.find_all('span')[1].get_text()] = link #str(counter+1) + ' ' +
+            counter += 1
+
 
         # dict structure mainPage <- [Name, url]
         # dict structure bossList <- [, [Name, url]]
         raidDict['mainPage'] = [raidPage.a.find_all('span')[1].get_text(), raidPage.a['href'].replace('//', '')]
-        raidDict['bossList'] = bossList
+        raidDict['bossList'] = bossDict
 
         return raidDict
 
