@@ -1,1 +1,50 @@
-
+|cFFFF00008 Za'qul, Harbinger of Ny'alotha|r
+{T}|cFF00FF002.7. Summary for Tanks|r
+- Make sure to be closest to the other tank on the pull and at the start of Phases Two and Four, so that {spell:295444}|cFF72D5FFMind Tether|r links the two tanks.
+- Make sure to be within 12 yards of each other whenever possible to keep the {spell:295444}|cFF72D5FFMind Tether|r damage as low as possible.
+- Do not tank the boss directly in the center of the room (since this is where the {spell:292565}|cFF72D5FFCrushing Grasp|r tentacle will often hit).
+- Pick up the Horrific Vision adds and bring them in melee range so the DPS can cleave them.
+- During Phases Two and Three, pull the boss into the {spell:292996}|cFF72D5FFMaddening Eruption|r void zones to soak them and ensure that the boss is debuffed by them.
+- During Phase Four, face the boss towards the inside of the room so that the {spell:295999}|cFF72D5FFCaustic Delirium|r void zones do not spawn in the {spell:298192}|cFF72D5FFDark Beyond|r.{/T}{H}|cFF00FF002.8. Summary for Healers and DPS|r
+|cff8080802.8.1. Phase One|r
+- Avoid entering the {spell:298192}|cFF72D5FFDark Beyond|r around the outer edges of the room.
+- Avoid getting hit by the {spell:292565}|cFF72D5FFCrushing Grasp|r tentacle.
+- Dispel players affected by {spell:292963}|cFF72D5FFDread|r in a staggered way, and heal up the raid-wide damage.
+- Do not stand in the {spell:294545}|cFF72D5FFPortal of Madness|r void zones.
+- Focus the Horrific Summoners and cleave down the Horrific Visions.
+|cff8080802.8.2. Phases Two and Three|r
+- Avoid entering the {spell:298192}|cFF72D5FFDark Beyond|r around the outer edges of the room.
+- Avoid getting hit by the {spell:292565}|cFF72D5FFCrushing Grasp|r tentacle.
+- Dispel players affected by {spell:292963}|cFF72D5FFDread|r in a staggered way, and heal up the raid-wide damage.
+- Heal the increasing raid-wide damage from {spell:292971}|cFF72D5FFHysteria|r.
+- Move away from allies affected by {spell:293509}|cFF72D5FFManifest Nightmares|r. If affected by {spell:293509}|cFF72D5FFManifest Nightmares|r, drop the resulting void zones in the center of the room, either overlapping them or leaving gaps between them.
+- Do not stand in the {spell:292996}|cFF72D5FFMaddening Eruption|r void zone.
+- During Phase Three, assigned DPS players enter the {spell:295249}|cFF72D5FFDelirium Realm|r by standing in {spell:304733}|cFF72D5FFDelirium's Descent|r void zones.
+- During Phase Three, healers must make sure to heal up and dispel players who exit the {spell:295249}|cFF72D5FFDelirium Realm|r.
+|cff8080802.8.3. Phase Four|r
+- Avoid entering the {spell:298192}|cFF72D5FFDark Beyond|r around the outer edges of the room.
+- Avoid getting hit by the {spell:292565}|cFF72D5FFCrushing Grasp|r tentacle.
+- Dispel players affected by {spell:296018}|cFF72D5FFManic Dread|r in a staggered way, and heal up the raid-wide damage.
+- Assigned DPS players enter the {spell:295249}|cFF72D5FFDelirium Realm|r by standing in {spell:295999}|cFF72D5FFCaustic Delirium|r void zones in order to break the boss's damage absorption shield and interrupt {spell:296078}|cFF72D5FFDark Pulse|r.
+- Assigned healers and DPS players use the {spell:299708}|cFF72D5FFFear's Gate|r portals to enter the Fear Realm and focus the Horrific Summoners.{/H}{D}|cFF00FF002.8. Summary for Healers and DPS|r
+|cff8080802.8.1. Phase One|r
+- Avoid entering the {spell:298192}|cFF72D5FFDark Beyond|r around the outer edges of the room.
+- Avoid getting hit by the {spell:292565}|cFF72D5FFCrushing Grasp|r tentacle.
+- Dispel players affected by {spell:292963}|cFF72D5FFDread|r in a staggered way, and heal up the raid-wide damage.
+- Do not stand in the {spell:294545}|cFF72D5FFPortal of Madness|r void zones.
+- Focus the Horrific Summoners and cleave down the Horrific Visions.
+|cff8080802.8.2. Phases Two and Three|r
+- Avoid entering the {spell:298192}|cFF72D5FFDark Beyond|r around the outer edges of the room.
+- Avoid getting hit by the {spell:292565}|cFF72D5FFCrushing Grasp|r tentacle.
+- Dispel players affected by {spell:292963}|cFF72D5FFDread|r in a staggered way, and heal up the raid-wide damage.
+- Heal the increasing raid-wide damage from {spell:292971}|cFF72D5FFHysteria|r.
+- Move away from allies affected by {spell:293509}|cFF72D5FFManifest Nightmares|r. If affected by {spell:293509}|cFF72D5FFManifest Nightmares|r, drop the resulting void zones in the center of the room, either overlapping them or leaving gaps between them.
+- Do not stand in the {spell:292996}|cFF72D5FFMaddening Eruption|r void zone.
+- During Phase Three, assigned DPS players enter the {spell:295249}|cFF72D5FFDelirium Realm|r by standing in {spell:304733}|cFF72D5FFDelirium's Descent|r void zones.
+- During Phase Three, healers must make sure to heal up and dispel players who exit the {spell:295249}|cFF72D5FFDelirium Realm|r.
+|cff8080802.8.3. Phase Four|r
+- Avoid entering the {spell:298192}|cFF72D5FFDark Beyond|r around the outer edges of the room.
+- Avoid getting hit by the {spell:292565}|cFF72D5FFCrushing Grasp|r tentacle.
+- Dispel players affected by {spell:296018}|cFF72D5FFManic Dread|r in a staggered way, and heal up the raid-wide damage.
+- Assigned DPS players enter the {spell:295249}|cFF72D5FFDelirium Realm|r by standing in {spell:295999}|cFF72D5FFCaustic Delirium|r void zones in order to break the boss's damage absorption shield and interrupt {spell:296078}|cFF72D5FFDark Pulse|r.
+- Assigned healers and DPS players use the {spell:299708}|cFF72D5FFFear's Gate|r portals to enter the Fear Realm and focus the Horrific Summoners.{/D}
