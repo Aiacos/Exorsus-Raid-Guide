@@ -9,7 +9,7 @@ if __name__ == '__main__':
     url2 = 'https://www.icy-veins.com/wow/za-qul-harbinger-of-ny-alotha-strategy-guide-in-the-eternal-palace-raid'
     url3 = 'https://www.icy-veins.com/wow/queen-azshara-strategy-guide-in-the-eternal-palace-raid'
 
-    p = TactParser(url1)
+    p = TactParser(url)
     c = Converter(p.getBossTactTagDict())
     print c.get_text()
 
