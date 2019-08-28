@@ -8,6 +8,7 @@ from PySide2 import QtCore, QtWidgets, QtGui
 from PySide2.QtCore import QObject, SIGNAL, QThread
 
 from Parser import TactParser, BossParser
+from Converter import Converter
 
 
 class RaidGuideGui(QtWidgets.QWidget):
@@ -54,10 +55,17 @@ class RaidGuideGui(QtWidgets.QWidget):
         #self.buttonLayout.addWidget(self.updateButton)
 
         # connect
-        #self.bossComboBox.currentIndexChanged.connect(self.selectionchange)
+        self.bossComboBox.activated.connect(self.updateTextArea)
 
         # launch gui
         self.show()
+
+    def updateTextArea(self):
+        selectedBoss = self.bossComboBox.currentText()
+        #print selectedBoss
+        parser = TactParser(self.bossList.getBossList()[selectedBoss])
+        convert = Converter(parser.getBossTactTagDict())
+        self.outTextArea.setPlainText(convert.get_text())
 
 
 
