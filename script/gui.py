@@ -60,6 +60,8 @@ class RaidGuideGui(QtWidgets.QWidget):
         # launch gui
         self.show()
 
+        self.updateTextArea()
+
     def updateTextArea(self):
         selectedBoss = self.bossComboBox.currentText()
         #print selectedBoss
