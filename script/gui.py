@@ -8,7 +8,7 @@ from PySide2 import QtCore, QtWidgets, QtGui
 from PySide2.QtCore import QObject, SIGNAL, QThread
 
 from Parser import TactParser, BossParser
-from Converter import Converter
+from converter import Converter
 
 
 class RaidGuideGui(QtWidgets.QWidget):
