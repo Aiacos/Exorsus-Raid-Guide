@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup as bs
 import requests
-from Parser import TactParser, BossParser
-from Converter import Converter
+from parser import TactParser, BossParser
+from converter import Converter
 
 
 if __name__ == '__main__':
