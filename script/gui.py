@@ -11,6 +11,24 @@ from parser import TactParser, BossParser
 from converter import Converter
 
 
+class RaidGuideMainWindow(QtWidgets.QMainWindow):
+
+    def __init__(self, parent=None):
+
+        super(RaidGuideMainWindow, self).__init__(parent)
+        self.form_widget = RaidGuideGui(self)
+        self.setCentralWidget(self.form_widget)
+
+        # menu bar
+        self.menuBar = self.menuBar()
+        self.menuBar.addMenu('File')
+
+        # status bar
+        self.statusBar = self.statusBar()
+        self.progressBar = QtWidgets.QProgressBar()
+        self.statusBar.addWidget(self.progressBar)
+
+
 class RaidGuideGui(QtWidgets.QWidget):
     """
     The class generates the graphical interface of the application. This cannot be changed.
@@ -63,16 +81,19 @@ class RaidGuideGui(QtWidgets.QWidget):
         self.updateTextArea()
 
     def updateTextArea(self):
+        # emit start
+
         selectedBoss = self.bossComboBox.currentText()
         #print selectedBoss
         parser = TactParser(self.bossList.getBossList()[selectedBoss])
         convert = Converter(parser.getBossTactTagDict())
         self.outTextArea.setPlainText(convert.get_text())
 
+        # emit end
 
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
-    frame = RaidGuideGui()
+    frame = RaidGuideMainWindow()
     frame.show()
     sys.exit(app.exec_())
