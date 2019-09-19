@@ -2,9 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
-import time
-
-from PySide2 import QtCore, QtWidgets, QtGui
+from PySide2 import QtWidgets
 
 from parser import TactParser, BossParser
 from converter import Converter
@@ -58,7 +56,7 @@ class RaidGuideGui(QtWidgets.QWidget):
         # boss ComboBox
         self.bossList = BossParser(self.urlLineEdit.placeholderText())
         self.bossComboBox = QtWidgets.QComboBox()
-        for boss, link in self.bossList.getBossList().iteritems():
+        for boss in self.bossList.getBossList().keys():
             self.bossComboBox.addItem(boss)
         self.layout.addWidget(self.bossComboBox)
 
@@ -69,8 +67,8 @@ class RaidGuideGui(QtWidgets.QWidget):
         self.outTextArea = QtWidgets.QPlainTextEdit()
         self.buttonLayout.addWidget(self.outTextArea)
 
-        #self.buttonLayout.addWidget(self.reloadButton)
-        #self.buttonLayout.addWidget(self.updateButton)
+        # self.buttonLayout.addWidget(self.reloadButton)
+        # self.buttonLayout.addWidget(self.updateButton)
 
         # connect
         self.bossComboBox.activated.connect(self.updateTextArea)
