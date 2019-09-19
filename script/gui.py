@@ -5,7 +5,6 @@ import sys
 import time
 
 from PySide2 import QtCore, QtWidgets, QtGui
-from PySide2.QtCore import QObject, SIGNAL, QThread
 
 from parser import TactParser, BossParser
 from converter import Converter
@@ -52,7 +51,8 @@ class RaidGuideGui(QtWidgets.QWidget):
 
         # url
         self.urlLineEdit = QtWidgets.QLineEdit()
-        self.urlLineEdit.setPlaceholderText('https://www.icy-veins.com/wow/the-eternal-palace-raid-guides-for-battle-for-azeroth')
+        self.urlLineEdit.setPlaceholderText(
+            'https://www.icy-veins.com/wow/the-eternal-palace-raid-guides-for-battle-for-azeroth')
         self.layout.addWidget(self.urlLineEdit)
 
         # boss ComboBox
