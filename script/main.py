@@ -19,7 +19,7 @@ def test():
 
     p = TactParser(url)
     c = Converter(p.getBossTactTagDict())
-    print c.get_text()
+    print(c.get_text())
 
 
 if __name__ == '__main__':
