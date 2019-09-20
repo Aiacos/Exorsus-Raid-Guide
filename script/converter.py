@@ -57,7 +57,7 @@ class Converter(object):
             for line, counter in zip(contentTextDict['h4PhaseList'], range(len(contentTextDict['h4PhaseList']))):
                 if counter % 2:
                     for li in line:
-                        #for li in i:
+                        # for li in i:
                         spellDict = self.findSpells(li)
                         text = str(li.text).replace('\n', ' ').replace('  ', ' ').strip()
                         text = self.replaceSpells(text, spellDict)
@@ -73,9 +73,6 @@ class Converter(object):
 
         else:
             content = ''
-        #print contentTextDict['section']
-        #contentTextDict['h4PhaseList']
-        #contentTextDict['ContentList']
 
         return section, '\n'.join(content)
 
@@ -92,7 +89,8 @@ class Converter(object):
         tankText = '{T}' + self.wrapTextWith(tankContentList[0], self.greenColor) + '\n' + tankContentList[1] + '{/T}'
         textList.append(tankText)
 
-        healerText = '{H}' + self.wrapTextWith(healerContentList[0], self.greenColor) + '\n' + healerContentList[1] + '{/H}'
+        healerText = '{H}' + self.wrapTextWith(healerContentList[0],
+                                               self.greenColor) + '\n' + healerContentList[1] + '{/H}'
         textList.append(healerText)
 
         dpsText = '{D}' + self.wrapTextWith(dpsContentList[0], self.greenColor) + '\n' + dpsContentList[1] + '{/D}'
@@ -142,9 +140,9 @@ if __name__ == '__main__':
 
     dpsString = healerString
 
-    #testDict = {"boss": "Queen Azshara", "tank": tankString.splitlines(), "healer": healerString.splitlines(), "dps": dpsString.splitlines()}
+    # testDict = {"boss": "Queen Azshara", "tank": tankString.splitlines(), "healer": healerString.splitlines(), "dps": dpsString.splitlines()}
 
     ########################################
 
-    #c = Converter(testDict)
-    #print c.get_text()
+    # c = Converter(testDict)
+    # print c.get_text()
