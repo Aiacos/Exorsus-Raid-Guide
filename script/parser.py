@@ -7,8 +7,10 @@ from collections import OrderedDict
 class ExpansionParser():
     pass
 
+
 class RaidParser():
     pass
+
 
 class BossParser():
 
@@ -38,9 +40,8 @@ class BossParser():
         for boss in bossTagList:
             link = 'https://' + str(boss.a['href'].replace('//', ''))
             bossList.append([boss.a.find_all('span')[1].get_text(), link])
-            bossDict[boss.a.find_all('span')[1].get_text()] = link #str(counter+1) + ' ' +
+            bossDict[boss.a.find_all('span')[1].get_text()] = link  # str(counter+1) + ' ' +
             counter += 1
-
 
         # dict structure mainPage <- [Name, url]
         # dict structure bossList <- [, [Name, url]]
@@ -57,6 +58,7 @@ class BossParser():
 
     def getMainPage(self):
         return self.raidDict['mainPage']
+
 
 class TactParser(object):
 
@@ -78,14 +80,12 @@ class TactParser(object):
         self.healerDict = self.checkSection(healerSectionTag)
         self.dpsDict = self.checkSection(dpsSectionTag)
 
-
     def checkSection(self, section):
         contentTextList = []
         contentTextDict = {}
 
         # print section
         contentTextDict['section'] = section
-
 
         # title Phase: 2.8.1. Phase One
         titlePhaseList = []
@@ -111,7 +111,7 @@ class TactParser(object):
             contentTextDict['h4PhaseList'] = []
             contentTextDict['ContentList'] = contentList
 
-        return contentTextDict #contentTextList    #.rstrip().replace('\n\n', '\n')
+        return contentTextDict  # contentTextList    #.rstrip().replace('\n\n', '\n')
 
     def getBossTactTagDict(self):
         bossDict = {}
@@ -122,7 +122,6 @@ class TactParser(object):
         bossDict['dps'] = self.dpsDict
 
         return bossDict
-
 
     def parseList(self, section):
         liList = []
@@ -146,38 +145,33 @@ class TactParser(object):
                     # print 'FIX LIST:', bs(str(i), 'html.parser')
                     liList.append(bs(str(i), 'html.parser'))
 
-
                 # print 'TIPO: ', type(i)
                 # print '-------------'
 
         return liList
 
-
     def _testNextElement(self, sectionTag):
         # tag.nam: restituisce il nome del tag
-        print sectionTag, type(sectionTag)
-        print '-----------------START----------------'
-        print sectionTag.next_element, type(sectionTag.next_element)
-        print '--------------------------------------'
-        print sectionTag.next_element.next_element.next_element, type(sectionTag.next_element.next_element.next_element)
-        print '----------------DEBUG---------------'
+        print(sectionTag, type(sectionTag))
+        print('-----------------START----------------')
+        print(sectionTag.next_element, type(sectionTag.next_element))
+        print('--------------------------------------')
+        print(sectionTag.next_element.next_element.next_element,
+              type(sectionTag.next_element.next_element.next_element))
+        print('----------------DEBUG---------------')
         test = sectionTag.next_element.next_element.next_element
-        print 'tag', test.name
-        print 'string: ', test.string
-        print 'text: ', test.text
-        print '----------------- END -----------------'
+        print('tag', test.name)
+        print('string: ', test.string)
+        print('text: ', test.text)
+        print('----------------- END -----------------')
 
+        if __name__ == '__main__':
+            url = 'https://www.icy-veins.com/wow/queen-azshara-strategy-guide-in-the-eternal-palace-raid'
+            url2 = 'https://www.icy-veins.com/wow/orgozoa-strategy-guide-in-the-eternal-palace-raid'
+            url3 = 'https://www.icy-veins.com/wow/za-qul-harbinger-of-ny-alotha-strategy-guide-in-the-eternal-palace-raid'
 
-
-
-
-if __name__ == '__main__':
-    url = 'https://www.icy-veins.com/wow/queen-azshara-strategy-guide-in-the-eternal-palace-raid'
-    url2 = 'https://www.icy-veins.com/wow/orgozoa-strategy-guide-in-the-eternal-palace-raid'
-    url3 = 'https://www.icy-veins.com/wow/za-qul-harbinger-of-ny-alotha-strategy-guide-in-the-eternal-palace-raid'
-
-    c = TactParser(url)
-    #print c.tankDict['section']
-    #print c.tankDict['h4PhaseList']
-    #print c.tankDict['ContentList']
-    #print c.get_text()
+            c = TactParser(url)
+            # print c.tankDict['section']
+            # print c.tankDict['h4PhaseList']
+            # print c.tankDict['ContentList']
+            # print c.get_text()
