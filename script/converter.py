@@ -10,7 +10,8 @@ class Converter(object):
         self.spellColor = '|cFF72D5FFxxxxxx|r'
         self.epicColor = '|cFFA335EExxxxxx|r'
 
-        self.text = self.convert(bossDict['boss'], bossDict['tank'], bossDict['healer'], bossDict['dps'])
+        self.text = self.convert(
+            bossDict['boss'], bossDict['tank'], bossDict['healer'], bossDict['dps'])
 
     def extractIconID(self, link):
         id = link.split('/')[-1].split('-')[0]
@@ -18,7 +19,8 @@ class Converter(object):
 
     def replaceSpells(self, text, spellDict):
         for name, id in spellDict.items():
-            spell = self.wrapSpell(id) + self.wrapTextWith(name, self.spellColor)
+            spell = self.wrapSpell(
+                id) + self.wrapTextWith(name, self.spellColor)
             text = text.replace(name, spell)
 
         return text
@@ -59,15 +61,18 @@ class Converter(object):
                     for li in line:
                         # for li in i:
                         spellDict = self.findSpells(li)
-                        text = str(li.text).replace('\n', ' ').replace('  ', ' ').strip()
+                        text = str(li.text).replace(
+                            '\n', ' ').replace('  ', ' ').strip()
                         text = self.replaceSpells(text, spellDict)
                         content.append('- ' + text)
                 else:
-                    content.append(self.wrapTextWith(str(line.text), self.grayColor))
+                    content.append(self.wrapTextWith(
+                        str(line.text), self.grayColor))
         elif contentTextDict['ContentList']:
             for li in contentTextDict['ContentList']:
                 spellDict = self.findSpells(li)
-                text = str(li.text).replace('\n', ' ').replace('  ', ' ').strip()
+                text = str(li.text).replace(
+                    '\n', ' ').replace('  ', ' ').strip()
                 text = self.replaceSpells(text, spellDict)
                 content.append('- ' + text)
 
@@ -86,14 +91,16 @@ class Converter(object):
         textList.append(self.wrapTextWith(bossName, self.redColor) + '\n')
 
         # content
-        tankText = '{T}' + self.wrapTextWith(tankContentList[0], self.greenColor) + '\n' + tankContentList[1] + '{/T}'
+        tankText = '{T}' + self.wrapTextWith(
+            tankContentList[0], self.greenColor) + '\n' + tankContentList[1] + '{/T}'
         textList.append(tankText)
 
         healerText = '{H}' + self.wrapTextWith(healerContentList[0],
                                                self.greenColor) + '\n' + healerContentList[1] + '{/H}'
         textList.append(healerText)
 
-        dpsText = '{D}' + self.wrapTextWith(dpsContentList[0], self.greenColor) + '\n' + dpsContentList[1] + '{/D}'
+        dpsText = '{D}' + self.wrapTextWith(
+            dpsContentList[0], self.greenColor) + '\n' + dpsContentList[1] + '{/D}'
         textList.append(dpsText)
 
         return ''.join(textList)

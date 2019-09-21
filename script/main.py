@@ -6,9 +6,9 @@ from bs4 import BeautifulSoup as bs
 import requests
 from PySide2 import QtWidgets
 
-from parser import TactParser, BossParser
-from converter import Converter
-from gui import RaidGuideMainWindow
+from .parser import TactParser
+from .converter import Converter
+from .gui import RaidGuideMainWindow
 
 
 def test():
