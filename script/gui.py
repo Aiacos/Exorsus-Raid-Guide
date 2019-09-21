@@ -1,8 +1,8 @@
 import sys
 from PySide2 import QtWidgets
 
-from .parser import TactParser, BossParser
-from .converter import Converter
+from parser import TactParser, BossParser
+from converter import Converter
 
 
 class RaidGuideMainWindow(QtWidgets.QMainWindow):
