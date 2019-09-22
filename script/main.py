@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#!usr/local/bin/ python
+# !usr/local/bin/ python
 
 import sys
 from bs4 import BeautifulSoup as bs
