@@ -87,7 +87,6 @@ class TactParser(object):
         self.dpsDict = self.checkSection(dpsSectionTag)
 
     def checkSection(self, section):
-        contentTextList = []
         contentTextDict = {}
 
         # print section
@@ -175,11 +174,13 @@ class TactParser(object):
         print('----------------- END -----------------')
 
         if __name__ == '__main__':
-            url = 'https://www.icy-veins.com/wow/queen-azshara-strategy-guide-in-the-eternal-palace-raid'
-            url2 = 'https://www.icy-veins.com/wow/orgozoa-strategy-guide-in-the-eternal-palace-raid'
-            url3 = 'https://www.icy-veins.com/wow/za-qul-harbinger-of-ny-alotha-strategy-guide-in-the-eternal-palace-raid'
+            pass
 
-            c = TactParser(url)
+            # url = 'https://www.icy-veins.com/wow/queen-azshara-strategy-guide-in-the-eternal-palace-raid'
+            # url2 = 'https://www.icy-veins.com/wow/orgozoa-strategy-guide-in-the-eternal-palace-raid'
+            # url3 = 'https://www.icy-veins.com/wow/za-qul-harbinger-of-ny-alotha-strategy-guide-in-the-eternal-palace-raid'
+
+            # c = TactParser(url)
             # print c.tankDict['section']
             # print c.tankDict['h4PhaseList']
             # print c.tankDict['ContentList']
