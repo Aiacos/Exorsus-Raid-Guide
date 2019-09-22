@@ -14,8 +14,8 @@ from gui import RaidGuideMainWindow
 def test():
     """Test function."""
     url = 'https://www.icy-veins.com/wow/the-queens-court-strategy-guide-in-the-eternal-palace-raid'
-    url2 = 'https://www.icy-veins.com/wow/za-qul-harbinger-of-ny-alotha-strategy-guide-in-the-eternal-palace-raid'
-    url3 = 'https://www.icy-veins.com/wow/queen-azshara-strategy-guide-in-the-eternal-palace-raid'
+    # url2 = 'https://www.icy-veins.com/wow/za-qul-harbinger-of-ny-alotha-strategy-guide-in-the-eternal-palace-raid'
+    # url3 = 'https://www.icy-veins.com/wow/queen-azshara-strategy-guide-in-the-eternal-palace-raid'
 
     p = TactParser(url)
     c = Converter(p.getBossTactTagDict())
