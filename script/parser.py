@@ -40,12 +40,14 @@ class BossParser():
         for boss in bossTagList:
             link = 'https://' + str(boss.a['href'].replace('//', ''))
             bossList.append([boss.a.find_all('span')[1].get_text(), link])
-            bossDict[boss.a.find_all('span')[1].get_text()] = link  # str(counter+1) + ' ' +
+            # str(counter+1) + ' ' +
+            bossDict[boss.a.find_all('span')[1].get_text()] = link
             counter += 1
 
         # dict structure mainPage <- [Name, url]
         # dict structure bossList <- [, [Name, url]]
-        raidDict['mainPage'] = [raidPage.a.find_all('span')[1].get_text(), raidPage.a['href'].replace('//', '')]
+        raidDict['mainPage'] = [raidPage.a.find_all(
+            'span')[1].get_text(), raidPage.a['href'].replace('//', '')]
         raidDict['bossList'] = bossDict
 
         return raidDict
@@ -68,12 +70,16 @@ class TactParser(object):
         soup = bs(r.content, 'html.parser')
 
         # boss Name
-        self.bossName = soup.find('span', class_='toc_page_list_item selected').get_text().replace('\n', ' ').strip()
+        self.bossName = soup.find(
+            'span', class_='toc_page_list_item selected').get_text().replace('\n', ' ').strip()
 
         # sezioni
-        tankSectionTag = soup.find_all(['h2', 'h3'], string=re.compile('Summary for Tanks'))[0]
-        healerSectionTag = soup.find_all(['h2', 'h3'], string=re.compile('Summary for Healers and DPS'))[0]
-        dpsSectionTag = soup.find_all(['h2', 'h3'], string=re.compile('Summary for Healers and DPS'))[0]
+        tankSectionTag = soup.find_all(
+            ['h2', 'h3'], string=re.compile('Summary for Tanks'))[0]
+        healerSectionTag = soup.find_all(
+            ['h2', 'h3'], string=re.compile('Summary for Healers and DPS'))[0]
+        dpsSectionTag = soup.find_all(
+            ['h2', 'h3'], string=re.compile('Summary for Healers and DPS'))[0]
 
         # contentuto delle sezioni
         self.tankDict = self.checkSection(tankSectionTag)
@@ -89,7 +95,7 @@ class TactParser(object):
 
         # title Phase: 2.8.1. Phase One
         titlePhaseList = []
-        sectionID = section['id'] + '-\d'
+        sectionID = section['id']
         for p in section.find_next_siblings('h4', id=re.compile(sectionID)):
             # print p
             # print type(p)
@@ -125,6 +131,9 @@ class TactParser(object):
 
     def parseList(self, section):
         liList = []
+
+        if not section.find_next_sibling('ul'):
+            section = section.parent
 
         # list Phase: During Phase One
         for i in section.find_next_sibling('ul'):
