@@ -2,8 +2,6 @@
 # !usr/local/bin/ python
 
 import sys
-from bs4 import BeautifulSoup as bs
-import requests
 from PySide2 import QtWidgets
 
 from parser import TactParser
